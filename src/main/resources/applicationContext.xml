@@ -4,24 +4,45 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
     <!-- Spring的快速入门========= -->
-    <bean id="userService" class="io.cxh.spring.demo1.UserServiceImpl">
-        <!-- 依赖注入 -->
-        <property name="name" value="老王(XML配置中)"/>
-    </bean>
+    <!--<bean id="userService" class="io.cxh.spring.demo1.UserServiceImpl">-->
+        <!--&lt;!&ndash; 依赖注入 &ndash;&gt;-->
+        <!--<property name="name" value="老王(XML配置中)"/>-->
+    <!--</bean>-->
 
     <!-- Spring 的创建Bean的方式 -->
     <!-- 无参数构造方法实例化Bean(默认) -->
-    <bean id="bean1" class="io.cxh.spring.demo2.Bean1"></bean>
+    <!--<bean id="bean1" class="io.cxh.spring.demo2.Bean1"></bean>-->
 
     <!-- 静态工厂实例化 -->
-    <bean id="bean2" class="io.cxh.spring.demo2.Bean2Factory" factory-method="getBean2Instance"/>
+    <!--<bean id="bean2" class="io.cxh.spring.demo2.Bean2Factory" factory-method="getBean2Instance"/>-->
 
     <!-- 实例工厂实例化 -->
-    <bean id="bean3Factory" class="io.cxh.spring.demo2.Bean3Factory"></bean>
-    <bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3Instance"/>
+    <!--<bean id="bean3Factory" class="io.cxh.spring.demo2.Bean3Factory"></bean>-->
+    <!--<bean id="bean3" factory-bean="bean3Factory" factory-method="getBean3Instance"/>-->
 
     <!-- Bean的作用范围 -->
     <!--<bean id="orderDao" class="io.cxh.spring.demo3.OrderDao" scope="prototype" />-->
-    <bean id="orderDao" class="io.cxh.spring.demo3.OrderDao" init-method="setUp" destroy-method="tearDown" />
+    <!--<bean id="orderDao" class="io.cxh.spring.demo3.OrderDao" init-method="setUp" destroy-method="tearDown" />-->
 
+    <!-- Bean的生命周期 -->
+    <!--<bean id="productDao" class="io.cxh.spring.demo4.ProductDaoImpl" init-method="setup" destroy-method="tearDown">-->
+        <!--<property name="name" value="空调"/>-->
+    <!--</bean>-->
+
+    <!--<bean class="io.cxh.spring.demo4.MyBeanPostProcessor"/>-->
+
+    <!-- Spring属性的注入 -->
+    <bean id="car" class="io.cxh.spring.demo5.Car">
+        <!-- 构造方法的方式注入 -->
+        <constructor-arg name="name" value="宝马"/>
+        <constructor-arg name="price" value="500000"/>
+        <!--<constructor-arg index="0" value="奔驰"/>-->
+        <!--<constructor-arg index="1" value="800000"/>-->
+    </bean>
+
+    <bean id="car2" class="io.cxh.spring.demo5.Car2">
+        <property name="name" value="奇瑞QQ"/>
+        <property name="price" value="30000"/>
+
+    </bean>
 </beans>
